@@ -1,0 +1,28 @@
+/*This program demonstrates an analog input using a potentiometer and displaying its value
+on the serial monitor.
+This code reads the value of the potentiometer connected to analog input A0 using the analogRead() function, 
+which returns a value between 0 and 1023 representing the input voltage as a fraction of the reference voltage 
+(5V in this case). The code then converts the bit-value to a voltage value using the formula
+voltage = (value * 5.0) / 1023.0. 
+The code prints the potentiometer bit-value and voltage value to the serial monitor using the Serial.print()
+and Serial.println() functions, and then delays for 100 milliseconds before looping again.*/
+
+int POT_PIN = A0;// set int as Ao port
+float value = 0.0; // storing bit for potentiometer
+float voltage = 0.0;// storing bit of volt 
+
+void setup() {
+  // put your setup code here, to run once:
+Serial.begin(9600); //begn serial print
+}
+void loop() {
+  // put your main code here, to run repeatedly:  
+value = analogRead(POT_PIN);// read the value of the analog pin
+float voltage = (value * 5.0) / 1023.0; //convert the bit value to voltage value
+
+Serial.print (" bit-value ="); //print the text in quotation marks
+Serial.print (value );          // print the value of the vairable val
+Serial.print ( "\t voltage value =");
+Serial.print (voltage);
+Serial.println ( "\t"); // tab space
+}
