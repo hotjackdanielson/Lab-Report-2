@@ -1,8 +1,8 @@
 // this program allows the user to change the colors of an RGB LED and demonstrates the analog output function 
 // Define pins for LEDs 
-int ledR = 9;         
-int ledG = 3;         
-int ledB = 5;         
+int ledR = 11;         
+int ledG = 10;         
+int ledB = 9;         
 
 void setup() {
   // put your setup code here, to run once:
