@@ -1,0 +1,43 @@
+/*In this code, we first define the pins for the RGB LED and the potentiometer.
+We then initialize the RGB LED pins as outputs and the potentiometer pin as an input in the setup() function.
+
+In the loop() function, we read the value from the potentiometer using the analogRead() function. 
+We then map the potentiometer value to a color range from black to white using the map() function,
+which takes the potentiometer value, the minimum and maximum values of the potentiometer (0 and 1023), 
+and the minimum and maximum values of the color range (0 and 255).
+We then set the RGB values based on the mapped color value using the analogWrite() function. 
+Finally, we wait for a short period of time using the delay() function before repeating the process.*/
+
+// define the pins for the RGB LED
+int redPin = 11;
+int greenPin = 10;
+int bluePin = 9;
+
+// define the pin for the potentiometer
+int potPin = A0;
+
+void setup() {
+  // initialize the RGB LED pins as outputs
+  pinMode(redPin, OUTPUT);
+  pinMode(greenPin, OUTPUT);
+  pinMode(bluePin, OUTPUT);
+
+  // initialize the potentiometer pin as input
+  pinMode(potPin, INPUT);
+}
+
+void loop() {
+  // read the value from the potentiometer
+  int potValue = analogRead(potPin);
+
+  // map the potentiometer value to a color range from black to white
+  int colorValue = map(potValue, 0, 1023, 0, 255);
+
+  // set the RGB values based on the mapped color value
+  analogWrite(redPin, colorValue);
+  analogWrite(greenPin, colorValue);
+  analogWrite(bluePin, colorValue);
+
+  // wait for a short period of time
+  delay(50);
+}
