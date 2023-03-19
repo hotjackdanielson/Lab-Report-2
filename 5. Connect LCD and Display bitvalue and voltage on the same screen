@@ -1,0 +1,34 @@
+/*In this code, we first include the LiquidCrystal library and define the pins for the LCD. We also define the pin for the input voltage.
+In the setup() function, we initialize the LCD, clear the screen, and set the cursor to the first position on the first line. 
+We then print the text "Bit Value: " on the LCD.
+In the loop() function, we read the value from the voltage pin using the analogRead() function. 
+We then convert the voltage value to a voltage level by multiplying it by the ratio of the maximum voltage (5V) to the maximum analog value (1023).
+We then display the bit value and voltage level on the LCD by setting the cursor to the appropriate positions and printing the values using the print() function. 
+We use the setCursor() function to move the cursor to the desired position on the LCD.
+Finally, we wait for a short period of time using the delay() function before repeating the process.*/
+#include <LiquidCrystal.h>
+
+// define the pins for the LCD
+LiquidCrystal lcd(12, 11, 5, 4, 3, 2);
+// define the pin for the input voltage
+int voltagePin = A0;
+void setup() {
+  // initialize the LCD
+  lcd.begin(16, 2);
+  lcd.clear();
+  lcd.setCursor(0, 0);
+  lcd.print("Bit Value: ");
+}
+void loop() {
+  // read the value from the voltage pin
+  int voltageValue = analogRead(voltagePin);
+  // convert the voltage value to a voltage level
+  float voltageLevel = voltageValue * (5.0 / 1023.0);
+  // display the bit value and voltage level on the LCD
+  lcd.setCursor(11, 0);
+  lcd.print(voltageLevel, 2);
+  lcd.setCursor(0, 1);
+  lcd.print(voltageValue);
+  // wait for a short period of time
+  delay(500);
+}
